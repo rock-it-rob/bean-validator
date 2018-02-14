@@ -25,7 +25,7 @@ public class RecordBean
     private Date lastUpdated;
 
     @Valid
-    @NotNull
+    @NotNull(message = "Address is missing")
     private AddressBean addressBean;
 
     public RecordBean()
