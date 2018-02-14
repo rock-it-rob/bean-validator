@@ -1,12 +1,19 @@
 package rob.proto.bean.validation;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Rob Benton
  */
 public class AddressBean
 {
+    @NotNull
     private Integer number;
+
+    @NotEmpty
     private String street;
+
     private Integer zipcode;
 
     public AddressBean()

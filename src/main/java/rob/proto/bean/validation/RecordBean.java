@@ -1,5 +1,8 @@
 package rob.proto.bean.validation;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -7,8 +10,10 @@ import java.util.Date;
  */
 public class RecordBean
 {
+    @NotNull
     private Integer id;
 
+    @NotEmpty
     private String name;
 
     private Integer version;
@@ -19,6 +24,8 @@ public class RecordBean
 
     private Date lastUpdated;
 
+    @Valid
+    @NotNull
     private AddressBean addressBean;
 
     public RecordBean()
