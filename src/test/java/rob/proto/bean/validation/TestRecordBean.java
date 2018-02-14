@@ -40,7 +40,6 @@ public class TestRecordBean
     public void testAllMissing()
     {
         Set<ConstraintViolation<RecordBean>> violations = validator.validate(recordBean);
-        assertNotNull(violations);
         assertNotEquals(0, violations.size());
         printViolations(violations);
     }
@@ -52,14 +51,36 @@ public class TestRecordBean
         recordBean.setName("dummy");
         recordBean.setAddressBean(null);
         Set<ConstraintViolation<RecordBean>> violations = validator.validate(recordBean);
-        assertNotNull(violations);
         assertNotEquals(0, violations.size());
         printViolations(violations);
     }
 
-    private void printViolations(Set<ConstraintViolation<RecordBean>> violations)
+    @Test
+    public void testGoodZipCode()
     {
-        for (ConstraintViolation<RecordBean> v : violations)
+        AddressBean addressBean = new AddressBean();
+        addressBean.setNumber(1);
+        addressBean.setStreet("street");
+        addressBean.setZipcode("12345");
+        Set<ConstraintViolation<AddressBean>> violations = validator.validate(addressBean);
+        assertEquals(0, violations.size());
+    }
+
+    @Test
+    public void testBadZipCode()
+    {
+        AddressBean addressBean = new AddressBean();
+        addressBean.setNumber(1);
+        addressBean.setStreet("street");
+        addressBean.setZipcode("123456");
+        Set<ConstraintViolation<AddressBean>> violations = validator.validate(addressBean);
+        assertNotEquals(0, violations.size());
+        printViolations(violations);
+    }
+
+    private <T> void printViolations(Set<ConstraintViolation<T>> violations)
+    {
+        for (ConstraintViolation<T> v : violations)
         {
             System.out.println(v.getMessage());
         }

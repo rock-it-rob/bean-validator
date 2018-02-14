@@ -14,7 +14,8 @@ public class AddressBean
     @NotEmpty
     private String street;
 
-    private Integer zipcode;
+    @ZipCode
+    private String zipcode;
 
     public AddressBean()
     {
@@ -40,12 +41,12 @@ public class AddressBean
         this.street = street;
     }
 
-    public Integer getZipcode()
+    public String getZipcode()
     {
         return zipcode;
     }
 
-    public void setZipcode(Integer zipcode)
+    public void setZipcode(String zipcode)
     {
         this.zipcode = zipcode;
     }
