@@ -2,6 +2,7 @@ package rob.proto.bean.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.Pattern;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -15,6 +16,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Pattern(regexp = "\\d{5}(-\\d{4})?")
+@ReportAsSingleViolation
 public @interface ZipCode
 {
     String message() default "{rob.proto.bean.validation.ZipCode.message}";

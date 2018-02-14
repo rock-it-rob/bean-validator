@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
  */
 public class AddressBean
 {
-    @NotNull
+    @NotNull(message = "Must provide street number")
     private Integer number;
 
     @NotEmpty
